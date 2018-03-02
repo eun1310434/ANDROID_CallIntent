@@ -1,5 +1,6 @@
+
 /**
- * 20.02.2018
+ * 02.03.2018
  * eun1310434@naver.com
  * https://blog.naver.com/eun1310434
  * 참고) Do it android programming
@@ -29,8 +30,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String data = editText.getText().toString();
-
                 Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse(data));
+                //Intent.ACTION_CALL <- 바로 전화걸기
                 startActivity(intent);
             }
         });
