@@ -23,6 +23,14 @@
         />
 
     <Button
+        android:id="@+id/buttonC"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="implicit Intent MSG"
+        android:onClick="onButton3Clicked"
+        />
+
+    <Button
         android:id="@+id/buttonB"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
