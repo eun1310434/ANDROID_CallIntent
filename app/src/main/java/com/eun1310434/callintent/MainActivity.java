@@ -34,15 +34,38 @@ public class MainActivity extends AppCompatActivity {
 
         editText = (EditText) findViewById(R.id.editText);
 
-        Button button = (Button) findViewById(R.id.button);
-        button.setOnClickListener(new View.OnClickListener() {
+        Button buttonA = (Button) findViewById(R.id.buttonA);
+        buttonA.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String data = editText.getText().toString();
-                Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse(data));
-                //Intent.ACTION_CALL <- 바로 전화걸기
-                startActivity(intent);
+                implicit_Intent(editText.getText().toString());
             }
         });
+
+        Button buttonB = (Button) findViewById(R.id.buttonB);
+        buttonB.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                explicit_Intent(editText.getText().toString());
+            }
+        });
+    }
+
+    public void implicit_Intent(String phoneNum){ // 암시적
+        Intent sendIntent = new Intent();
+        sendIntent.setAction(Intent.ACTION_DIAL);
+        sendIntent.putExtra(Intent.EXTRA_PHONE_NUMBER, phoneNum);
+        sendIntent.setData(Uri.parse(phoneNum));
+        //sendIntent.setType("text/plain"); // 문자나 메신저를 사용시
+        // Verify that the intent will resolve to an activity
+        if (sendIntent.resolveActivity(getPackageManager()) != null) {
+            startActivity(sendIntent);
+        }
+    }
+
+
+    public void explicit_Intent(String phoneNum){ // 명시적
+        Intent sendIntent = new Intent(Intent.ACTION_DIAL, Uri.parse(phoneNum));//Intent.ACTION_CALL <- 바로 전화걸기
+        startActivity(sendIntent);
     }
 }

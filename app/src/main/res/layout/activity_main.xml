@@ -15,11 +15,19 @@
         />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/buttonA"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Call"
+        android:text="implicit Intent call"
         android:onClick="onButton1Clicked"
+        />
+
+    <Button
+        android:id="@+id/buttonB"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="explicit Intent call"
+        android:onClick="onButton2Clicked"
         />
 
 </LinearLayout>
